@@ -6,17 +6,19 @@ import { LoginComponent } from './components/login/login.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { SignupComponent } from './components/register/register.component';
 import { AuthGuard } from './guard/auth.guard';
+import { SinglePostComponent } from './components/single-post/single-post.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'posts', component: PostsComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'single-post/:id', component: SinglePostComponent },
   // Add other routes as needed
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

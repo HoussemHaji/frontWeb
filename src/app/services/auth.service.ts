@@ -1,10 +1,11 @@
 // auth.service.ts
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from '../Model/user';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,9 @@ export class AuthService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   private user: User = new User();
   private UserSubject = new BehaviorSubject<User>(this.user);
-  constructor(private http: HttpClient) { }
+  private cookie!: string;
+  constructor(private http: HttpClient, 
+    private cookieService: CookieService) { }
 
   signup(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/register`, user);
@@ -27,11 +30,30 @@ export class AuthService {
     this.UserSubject.next(user);
   }
 
+  getToken(): string {
+    //return this.cookieService.get('token');
+    return this.cookie;
+  }
+
   login(email: string, password: string): Observable<any> {
     const body = { email, password };
-    return this.http.post(`${this.apiUrl}/auth/login`, body).pipe(
-      tap(() => this.isAuthenticatedSubject.next(true))
-    );
+    return this.http
+      .post(`${this.apiUrl}/auth/login`, body, { observe: 'response' })
+      .pipe(
+        tap((response: HttpResponse<any>) => {
+          // Extract and log cookies from the response headers
+          console.log(response.headers.get('Set-Cookie'));
+          this.cookie = response.body.token;
+          
+          // Log the entire response
+          console.log('Response:', response);
+  
+          // Update authentication status if login is successful
+          if (response.status === 200) {
+            this.isAuthenticatedSubject.next(true);
+          }
+        }) 
+      );
   }
 
   isAuthenticated(): Observable<boolean> {

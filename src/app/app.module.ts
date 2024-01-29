@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostsComponent } from './components/posts/posts.component';
 import { SignupComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { SinglePostComponent } from './components/single-post/single-post.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LoginComponent,
     PostsComponent,
     SignupComponent,
-    NavbarComponent
+    NavbarComponent,
+    SinglePostComponent,
+    CommentComponent
   ],
   imports: [
     HttpClientModule,
