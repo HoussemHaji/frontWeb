@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { User } from '../Model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,19 @@ import { tap } from 'rxjs/operators';
 export class AuthService {
   private apiUrl = 'http://localhost:5000/api';
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
-
-  constructor(private http: HttpClient) {}
+  private user: User = new User();
+  private UserSubject = new BehaviorSubject<User>(this.user);
+  constructor(private http: HttpClient) { }
 
   signup(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/register`, user);
+  }
+  getUser(): Observable<User> {
+    return this.UserSubject.asObservable();
+  }
+
+  setUser(user: User): void {
+    this.UserSubject.next(user);
   }
 
   login(email: string, password: string): Observable<any> {
@@ -29,7 +38,7 @@ export class AuthService {
     return this.isAuthenticatedSubject.asObservable();
   }
 
-    isAuthenticatedValue(): boolean {
+  isAuthenticatedValue(): boolean {
     return this.isAuthenticatedSubject.value;
   }
 

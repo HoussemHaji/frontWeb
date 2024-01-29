@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { response } from 'express';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent  {
+
+
   email = '';
   password = '';
 
@@ -18,6 +21,7 @@ export class LoginComponent {
       () => {
         // Successful login, navigate to "posts" page
         this.router.navigate(['/posts']);
+
       },
       (error) => {
         // Handle login error
