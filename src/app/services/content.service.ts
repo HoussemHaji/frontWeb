@@ -31,4 +31,11 @@ export class ContentService {
       headers: this.headers,
     });
   }
+  addComment(id: string, content: string): Observable<any> {
+    return this.http.post(
+      this.URL + `/comments`,
+      { content: content, postId: id },
+      { headers: this.headers }
+    );
+  }
 }

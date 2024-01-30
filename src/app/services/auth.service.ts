@@ -8,7 +8,7 @@ import { User } from '../Model/user';
 import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = 'http://localhost:5000/api';
@@ -16,8 +16,7 @@ export class AuthService {
   private user: User = new User();
   private UserSubject = new BehaviorSubject<User>(this.user);
   private cookie!: string;
-  constructor(private http: HttpClient, 
-    private cookieService: CookieService) { }
+  constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   signup(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/register`, user);
@@ -42,17 +41,11 @@ export class AuthService {
       .pipe(
         tap((response: HttpResponse<any>) => {
           // Extract and log cookies from the response headers
-          console.log(response.headers.get('Set-Cookie'));
           this.cookie = response.body.token;
-          
-          // Log the entire response
-          console.log('Response:', response);
-  
-          // Update authentication status if login is successful
           if (response.status === 200) {
             this.isAuthenticatedSubject.next(true);
           }
-        }) 
+        })
       );
   }
 
@@ -63,5 +56,4 @@ export class AuthService {
   isAuthenticatedValue(): boolean {
     return this.isAuthenticatedSubject.value;
   }
-
 }
