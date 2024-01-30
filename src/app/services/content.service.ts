@@ -38,4 +38,12 @@ export class ContentService {
       { headers: this.headers }
     );
   }
+  handleErrors(error: any): void {
+    //if unauthorized, redirect to login
+    if (error.status === 401) {
+      //this.router.navigate(['/login']);
+      localStorage.removeItem('token');
+      console.log('Unauthorized');
+    }
+  }
 }
