@@ -28,10 +28,14 @@ export class SinglePostComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log("asba");
     if (this.id) {
       this.contentService.addComment(this.id, this.content).subscribe((res) => {
+        console.log(res);
+        console.log('Comment added');
         this.content = '';
       });
+      window.location.reload();
     }
   }
 }
