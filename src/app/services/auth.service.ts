@@ -15,7 +15,6 @@ export class AuthService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   private user: User = new User();
   private UserSubject = new BehaviorSubject<User>(this.user);
-  private cookie!: string;
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   signup(user: any): Observable<any> {
@@ -31,7 +30,7 @@ export class AuthService {
 
   getToken(): string {
     //return this.cookieService.get('token');
-    return this.cookie;
+    return localStorage.getItem('token') ?? '';
   }
 
   login(email: string, password: string): Observable<any> {
@@ -41,7 +40,7 @@ export class AuthService {
       .pipe(
         tap((response: HttpResponse<any>) => {
           // Extract and log cookies from the response headers
-          this.cookie = response.body.token;
+          localStorage.setItem('token', response.body.token);
           if (response.status === 200) {
             this.isAuthenticatedSubject.next(true);
           }
