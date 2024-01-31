@@ -53,9 +53,9 @@
               />{{ comment.user.firstname }} {{ comment.user.lastname }}
             </p>
             <p class="text-sm text-gray-600 dark:text-gray-400">
-              <time pubdate datetime="2022-02-08" title="February 8th, 2022"
-                >Feb. 8, 2024</time
-              >
+              <time pubdate datetime="2022-02-08" title="Updated on">{{
+                comment.createdAt | date : "medium"
+              }}</time>
             </p>
           </div>
           <button

@@ -17,7 +17,7 @@ export class ContentService {
     Authorization: `Bearer ${this.auth_token}`,
   });
   getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.URL + '/posts', {
+    return this.http.get<Post[]>(this.URL + '/posts?sort=updatedAt', {
       headers: this.headers,
     });
   }
@@ -42,8 +42,7 @@ export class ContentService {
     //if unauthorized, redirect to login
     if (error.status === 401) {
       //this.router.navigate(['/login']);
-      if (typeof window !== 'undefined')
-      {localStorage.removeItem('token');}
+      localStorage.removeItem('token');
       console.log('Unauthorized');
     }
   }

@@ -17,7 +17,7 @@ export class SinglePostComponent implements OnInit {
   showSuccessToast: boolean = false;
   post: any = {};
   comments: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-  countComments : number = 0;
+  countComments: number = 0;
   constructor(
     private route: ActivatedRoute,
     private contentService: ContentService,
@@ -57,20 +57,14 @@ export class SinglePostComponent implements OnInit {
           console.error('Error adding comment:', error);
           // Handle the error here, you can display an error message or perform other actions
         }
-      })
-
-
-
-
-
-
-      ;
+      });
     }
   }
 
-    fetchComments(): void {
+  fetchComments(): void {
     this.contentService.getComments(this.id ?? '').subscribe({
       next: (comments) => {
+        console.log(comments);
         this.comments.next(comments);
         this.countComments = comments.length;
 
