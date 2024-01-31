@@ -55,7 +55,6 @@ export class SinglePostComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error adding comment:', error);
-          // Handle the error here, you can display an error message or perform other actions
         }
       });
     }
