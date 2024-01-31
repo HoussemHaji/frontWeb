@@ -11,6 +11,7 @@ import { SignupComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SinglePostComponent } from './components/single-post/single-post.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CommentComponent } from './components/comment/comment.component';
     SignupComponent,
     NavbarComponent,
     SinglePostComponent,
-    CommentComponent
+    CommentComponent,
+    ProfileComponent
   ],
   imports: [
     HttpClientModule,

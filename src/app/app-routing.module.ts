@@ -7,6 +7,7 @@ import { PostsComponent } from './components/posts/posts.component';
 import { SignupComponent } from './components/register/register.component';
 import { AuthGuard } from './guard/auth.guard';
 import { SinglePostComponent } from './components/single-post/single-post.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'posts', component: PostsComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'single-post/:id', component: SinglePostComponent },
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   // Add other routes as needed
 ];
 
