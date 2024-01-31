@@ -15,8 +15,8 @@ export class PostsComponent implements OnInit {
     private router:Router) {}
 
   ngOnInit(): void {
-    this.contentService.getPosts().subscribe((posts) => {
-      this.posts = posts;
-    });
+      this.contentService.getPosts().subscribe((posts) => {
+        this.posts = posts;
+      });
   }
 }

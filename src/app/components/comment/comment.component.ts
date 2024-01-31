@@ -15,16 +15,19 @@ export class CommentComponent implements OnInit {
 
   constructor(private contentService: ContentService) {}
 
+
   ngOnInit(): void {
+
     this.fetchComments();
+
   }
 
   fetchComments(): void {
     this.contentService.getComments(this.PostId ?? '').subscribe({
       next: (comments) => {
         this.comments.next(comments);
-        console.log(comments);
         this.commentCount.emit(comments.length);
+
       },
       error: (error) => {
         this.contentService.handleErrors(error);

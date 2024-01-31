@@ -26,8 +26,8 @@ export class ContentService {
       headers: this.headers,
     });
   }
-  getComments(id: string): Observable<Comment[]> {
-    return this.http.get<Comment[]>(this.URL + `/comments/${id}`, {
+  getComments(id: string): Observable<any[]> {
+    return this.http.get<any[]>(this.URL + `/comments/${id}`, {
       headers: this.headers,
     });
   }
@@ -42,7 +42,8 @@ export class ContentService {
     //if unauthorized, redirect to login
     if (error.status === 401) {
       //this.router.navigate(['/login']);
-      localStorage.removeItem('token');
+      if (typeof window !== 'undefined')
+      {localStorage.removeItem('token');}
       console.log('Unauthorized');
     }
   }

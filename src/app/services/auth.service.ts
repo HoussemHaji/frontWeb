@@ -28,9 +28,9 @@ export class AuthService {
     this.UserSubject.next(user);
   }
 
-  getToken(): string {
+  getToken(): any {
     //return this.cookieService.get('token');
-    return localStorage.getItem('token') ?? '';
+    return ((typeof window !== 'undefined') && localStorage.getItem('token') )?? '';
   }
 
   login(email: string, password: string): Observable<any> {
@@ -40,7 +40,8 @@ export class AuthService {
       .pipe(
         tap((response: HttpResponse<any>) => {
           // Extract and log cookies from the response headers
-          localStorage.setItem('token', response.body.token);
+          if (typeof window !== 'undefined')
+          {localStorage.setItem('token', response.body.token);}
           if (response.status === 200) {
             this.isAuthenticatedSubject.next(true);
           }
