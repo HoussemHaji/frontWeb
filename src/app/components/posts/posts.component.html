@@ -6,7 +6,7 @@
       <div *ngFor="let post of posts" class="md:mb-6 mb-10 min-w-fit mr-auto">
         <a
           [routerLink]="['/single-post', post.id]"
-          class="group relative flex flex-col items-end w-fit overflow-hidden rounded-lg shadow-lg"
+          class="group relative flex flex-col items-end w-fit overflow-hidden rounded-2xl shadow-lg"
         >
           <img
             [src]="post.mainImageUrl"

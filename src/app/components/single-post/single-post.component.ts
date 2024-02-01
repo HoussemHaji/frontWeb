@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContentService } from '../../services/content.service';
 import { AuthService } from '../../services/auth.service';
 import { BehaviorSubject } from 'rxjs';
@@ -16,12 +16,15 @@ export class SinglePostComponent implements OnInit {
   content: string = '';
   showSuccessToast: boolean = false;
   post: any = {};
+  userId !: string ;
+  profileRoute: string = '/profile/';
   comments: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
   countComments: number = 0;
   constructor(
     private route: ActivatedRoute,
     private contentService: ContentService,
-    private AuthService: AuthService
+    private AuthService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -32,13 +35,10 @@ export class SinglePostComponent implements OnInit {
       });
     }
 
+    this.userId= this.post.userId;
+    this.profileRoute = this.profileRoute + this.userId;
     this.fetchComments();
-
-
-
   }
-
-
 
   onSubmit(): void {
     if (this.id) {
@@ -75,4 +75,8 @@ export class SinglePostComponent implements OnInit {
       }
     });
   }
+
+  navigateProfile():void{
+      this.router.navigate([`/profile/${this.userId??''}`]);
+    }
 }

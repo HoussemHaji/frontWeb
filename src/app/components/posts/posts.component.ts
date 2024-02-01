@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Post } from '../../Model/post';
 import { ContentService } from '../../services/content.service';
 import { Router, RouterLink } from '@angular/router';
@@ -9,14 +9,14 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './posts.component.css',
 })
 export class PostsComponent implements OnInit {
+  @Input()
   posts: Post[] = [];
 
   constructor(private contentService: ContentService,
     private router:Router) {}
 
   ngOnInit(): void {
-      this.contentService.getPosts().subscribe((posts) => {
-        this.posts = posts;
-      });
+    console.log("HEEERe");
+    console.log(this.posts);
   }
 }
