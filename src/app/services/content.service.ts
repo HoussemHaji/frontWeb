@@ -48,6 +48,11 @@ export class ContentService {
       headers: this.headers,
     });
   }
+  getCategories(): Observable<any[]> {
+    return this.http.get<any[]>(this.URL + `/category`, {
+      headers: this.headers,
+    });
+  }
   handleErrors(error: any): void {
     //if unauthorized, redirect to login
     if (error.status === 401) {
@@ -56,4 +61,10 @@ export class ContentService {
       console.log('Unauthorized');
     }
   }
+  uploadFile(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('picture', file);
+    return this.http.post(this.URL + `/posts/upload-photo`, formData);
+  }
+  
 }

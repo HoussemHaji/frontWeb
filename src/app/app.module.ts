@@ -14,6 +14,7 @@ import { CommentComponent } from './components/comment/comment.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
     CommentComponent,
     ProfileComponent,
     HomeComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    CreatePostComponent
   ],
   imports: [
     HttpClientModule,
