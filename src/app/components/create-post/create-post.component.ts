@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContentService } from '../../services/content.service';
 import { NgForm } from '@angular/forms';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-post',
@@ -11,8 +12,10 @@ export class CreatePostComponent implements OnInit {
 
   selectedFile: File | null = null;
   categories: any[] = [];
+  showAlert: boolean = false;
   constructor(
-    private contetnService: ContentService
+    private contetnService: ContentService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -28,11 +31,18 @@ export class CreatePostComponent implements OnInit {
       this.contetnService.uploadFile(this.selectedFile).subscribe((data: any) => {
         form.value.mainImageUrl = data.filePath
         this.createPostfunction(form.value);
+        this.toastr.success('Personnes chargées avec succès', '', {
+          timeOut: 2000,
+        });
+
       }, (error) => {
         console.log(error);
       }
       );
     } else {
+      this.toastr.error('changer l\'image', '', {
+        timeOut: 2000,
+      });
       console.log("No file selected");
     }
   }
