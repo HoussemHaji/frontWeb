@@ -9,6 +9,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { SinglePostComponent } from './components/single-post/single-post.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,6 +19,8 @@ const routes: Routes = [
   { path: 'single-post/:id', component: SinglePostComponent },
   { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'profile' , component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'categories' , component: CategoriesComponent, canActivate: [AuthGuard] },
+
   // Add other routes as needed
 ];
 

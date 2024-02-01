@@ -13,6 +13,7 @@ import { SinglePostComponent } from './components/single-post/single-post.compon
 import { CommentComponent } from './components/comment/comment.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HomeComponent } from './components/home/home.component';
     SinglePostComponent,
     CommentComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    CategoriesComponent
   ],
   imports: [
     HttpClientModule,
