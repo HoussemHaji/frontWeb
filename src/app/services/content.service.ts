@@ -16,8 +16,13 @@ export class ContentService {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${this.auth_token}`,
   });
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.URL + '/posts?sort=updatedAt', {
+  getPostsForUser(userId: string): Observable<Post[]> {
+    return this.http.get<Post[]>(this.URL + `/posts/user/${userId}?sort=updatedAt`, {
+      headers: this.headers,
+    });
+  }
+    getPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(this.URL + `/posts?sort=updatedAt`, {
       headers: this.headers,
     });
   }
@@ -37,6 +42,11 @@ export class ContentService {
       { content: content, postId: id },
       { headers: this.headers }
     );
+  }
+  getUser(id: string): Observable<any> {
+    return this.http.get<any>(this.URL + `/auth/profile/${id}`, {
+      headers: this.headers,
+    });
   }
   handleErrors(error: any): void {
     //if unauthorized, redirect to login
