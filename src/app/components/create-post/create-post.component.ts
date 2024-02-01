@@ -11,6 +11,7 @@ export class CreatePostComponent implements OnInit {
 
   selectedFile: File | null = null;
   categories: any[] = [];
+  showAlert: boolean = false;
   constructor(
     private contetnService: ContentService
   ) { }
@@ -28,6 +29,12 @@ export class CreatePostComponent implements OnInit {
       this.contetnService.uploadFile(this.selectedFile).subscribe((data: any) => {
         form.value.mainImageUrl = data.filePath
         this.createPostfunction(form.value);
+        this.showAlert = true;
+
+        // Hide the alert after 5 seconds (adjust the time as needed)
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 5000);
       }, (error) => {
         console.log(error);
       }
