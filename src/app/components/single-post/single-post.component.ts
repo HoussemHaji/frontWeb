@@ -35,8 +35,6 @@ export class SinglePostComponent implements OnInit {
       });
     }
 
-    this.userId= this.post.userId;
-    this.profileRoute = this.profileRoute + this.userId;
     this.fetchComments();
   }
 
@@ -64,7 +62,7 @@ export class SinglePostComponent implements OnInit {
   fetchComments(): void {
     this.contentService.getComments(this.id ?? '').subscribe({
       next: (comments) => {
-        console.log(comments);
+
         this.comments.next(comments);
         this.countComments = comments.length;
 
@@ -77,6 +75,9 @@ export class SinglePostComponent implements OnInit {
   }
 
   navigateProfile():void{
+      this.userId= this.post.userId;
+      console.log(this.userId);
+
       this.router.navigate([`/profile/${this.userId??''}`]);
     }
 }

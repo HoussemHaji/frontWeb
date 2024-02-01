@@ -16,7 +16,6 @@ export class PostsComponent implements OnInit {
     private router:Router) {}
 
   ngOnInit(): void {
-    console.log("HEEERe");
-    console.log(this.posts);
+
   }
 }
