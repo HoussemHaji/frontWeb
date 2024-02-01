@@ -10,6 +10,7 @@ import { SinglePostComponent } from './components/single-post/single-post.compon
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'profile' , component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'categories' , component: CategoriesComponent, canActivate: [AuthGuard] },
+  { path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard] },
 
   // Add other routes as needed
 ];
