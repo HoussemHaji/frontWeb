@@ -9,7 +9,7 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ContentService {
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient, private authService: AuthService) { }
   private URL: String = 'http://localhost:5000/api';
   private auth_token = this.authService.getToken();
   private headers = new HttpHeaders({
@@ -21,7 +21,7 @@ export class ContentService {
       headers: this.headers,
     });
   }
-    getPosts(): Observable<Post[]> {
+  getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(this.URL + `/posts?sort=updatedAt`, {
       headers: this.headers,
     });
@@ -53,18 +53,23 @@ export class ContentService {
       headers: this.headers,
     });
   }
-  handleErrors(error: any): void {
-    //if unauthorized, redirect to login
-    if (error.status === 401) {
-      //this.router.navigate(['/login']);
-      localStorage.removeItem('token');
-      console.log('Unauthorized');
-    }
-  }
   uploadFile(file: File): Observable<any> {
     const formData = new FormData();
     formData.append('picture', file);
     return this.http.post(this.URL + `/posts/upload-photo`, formData);
   }
   
+  handleErrors(error: any): void {
+    if (error.status === 401) {
+      localStorage.removeItem('token');
+      console.log('Unauthorized');
+    }
+  }
+
+  createPost(post: Post): Observable<any> {
+    return this.http.post(this.URL + `/posts`, post, {
+      headers: this.headers,
+    });
+  }
+
 }
