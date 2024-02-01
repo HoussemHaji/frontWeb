@@ -18,8 +18,8 @@ export class LoginComponent  {
   onSubmit() {
     this.authService.login(this.email, this.password).subscribe(
       () => {
-        // Successful login, navigate to "posts" page
-        this.router.navigate(['/posts']);
+        // Successful login, navigate to "home" page
+        this.router.navigate(['/home']);
 
       },
       (error) => {

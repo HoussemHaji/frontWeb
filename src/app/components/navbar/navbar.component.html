@@ -1,12 +1,12 @@
 <nav
-  class="block fixed w-full z-50 px-4 py-2 mx-auto text-white bg-white border shadow-md border-white/80 bg-opacity-80 backdrop-blur-2xl backdrop-saturate-200 lg:px-8 lg:py-4"
+  class="fixed w-full z-50 px-4 py-2 mx-auto text-white bg-white border shadow-md border-white/80 bg-opacity-80 backdrop-blur-2xl backdrop-saturate-200 lg:px-8 lg:py-4"
 >
   <div
     class="container flex flex-wrap items-center justify-between mx-auto text-blue-gray-900"
   >
     <a
-      href="#"
-      class="mr-4 block cursor-pointer py-1.5 font-sans text-xl font-bold leading-relaxed text-inherit antialiased"
+      [routerLink]="['/home']"
+      class="mr-4 block cursor-pointer py-1.5 font-sans text-3xl font-bold leading-relaxed text-inherit antialiased"
     >
       PintGhaleba
     </a>
@@ -29,7 +29,7 @@
               fill="#90A4AE"
             ></path>
           </svg>
-          <a href="#" class="flex items-center"> Pages </a>
+          <a [routerLink]="['/home']" class="flex items-center"> Home </a>
         </li>
         <li
           class="flex items-center p-1 font-sans text-base antialiased font-medium leading-normal gap-x-2 text-blue-gray-900"
@@ -48,7 +48,7 @@
               fill="#90A4AE"
             ></path>
           </svg>
-          <a href="#" class="flex items-center"> Account </a>
+          <a [routerLink]="['/profile']" class="flex items-center"> Account </a>
         </li>
         <li
           class="flex items-center p-1 font-sans text-base antialiased font-medium leading-normal gap-x-2 text-blue-gray-900"
