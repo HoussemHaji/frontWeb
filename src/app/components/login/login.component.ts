@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -19,6 +20,7 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
+    private toastr: ToastrService
   ) {}
 
   onSubmit() {
@@ -28,14 +30,13 @@ export class LoginComponent {
         this.router.navigate(['/home']);
       },
       (error) => {
-        // Handle login error
+        // plus beau qu'avec toastr
         console.error('Login failed', error);
         this.showAlert = true;
 
-        // Hide the alert after 5 seconds (adjust the time as needed)
         setTimeout(() => {
           this.showAlert = false;
-        }, 5000);
+        }, 2000);
       }
     );
   }

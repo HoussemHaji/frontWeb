@@ -4,6 +4,7 @@ import { ContentService } from '../../services/content.service';
 import { AuthService } from '../../services/auth.service';
 import { BehaviorSubject } from 'rxjs';
 import { time } from 'console';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-single-post',
@@ -23,7 +24,7 @@ export class SinglePostComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private contentService: ContentService,
-    private AuthService: AuthService,
+    private toastr: ToastrService,
     private router: Router
   ) { }
 
@@ -45,14 +46,17 @@ export class SinglePostComponent implements OnInit {
           console.log(res);
           console.log('Comment added');
           this.content = '';
-          this.showSuccessToast = true;
-          setTimeout(() => {
-            this.showSuccessToast = false;
-          }, 5000);
           this.fetchComments();
+          this.toastr.success('Comment added successfully', '', {
+            timeOut: 2000,
+          });
         },
         error: (error) => {
           console.error('Error adding comment:', error);
+          this.contentService.handleErrors(error);
+          this.toastr.error('Error adding comment', '', {
+            timeOut: 2000,
+          });
         }
       });
     }

@@ -17,6 +17,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot()
   ],
   providers: [
     provideClientHydration(),
