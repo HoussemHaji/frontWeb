@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {}
 
   isLoggedIn(): boolean {
-    return localStorage.getItem('token') !== null;
+    return (typeof window !== 'undefined' && (localStorage.getItem('token') !== null));
   }
 
   logout(): void {
