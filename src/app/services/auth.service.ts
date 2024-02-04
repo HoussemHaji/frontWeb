@@ -67,4 +67,12 @@ export class AuthService {
   isAuthenticatedValue(): boolean {
     return this.isAuthenticatedSubject.value;
   }
+
+  getCurrentUser(): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/auth`, {
+      headers: {
+        Authorization: `Bearer ${this.getToken()}`,
+      },
+    });
+  }
 }

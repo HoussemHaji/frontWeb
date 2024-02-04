@@ -58,10 +58,11 @@ export class ContentService {
     formData.append('picture', file);
     return this.http.post(this.URL + `/posts/upload-photo`, formData);
   }
-  
+
   handleErrors(error: any): void {
     if (error.status === 401) {
-      localStorage.removeItem('token');
+      if(typeof window !== 'undefined')
+      {localStorage.removeItem('token');}
       console.log('Unauthorized');
     }
   }
