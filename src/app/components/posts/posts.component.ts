@@ -12,10 +12,7 @@ export class PostsComponent implements OnInit {
   @Input()
   posts: Post[] = [];
 
-  constructor(private contentService: ContentService,
-    private router:Router) {}
+  constructor(private contentService: ContentService, private router: Router) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 }
