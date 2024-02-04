@@ -6,6 +6,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from '../Model/user';
 import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,11 @@ export class AuthService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   private user: User = new User();
   private UserSubject = new BehaviorSubject<User>(this.user);
-  constructor(private http: HttpClient, private cookieService: CookieService) {}
+  constructor(
+    private http: HttpClient,
+    private cookieService: CookieService,
+    private toastr: ToastrService
+  ) {}
 
   signup(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/register`, user);
@@ -30,7 +35,9 @@ export class AuthService {
 
   getToken(): any {
     //return this.cookieService.get('token');
-    return ((typeof window !== 'undefined') && localStorage.getItem('token') )?? '';
+    return (
+      (typeof window !== 'undefined' && localStorage.getItem('token')) ?? ''
+    );
   }
 
   login(email: string, password: string): Observable<any> {
@@ -40,9 +47,13 @@ export class AuthService {
       .pipe(
         tap((response: HttpResponse<any>) => {
           // Extract and log cookies from the response headers
-          if (typeof window !== 'undefined')
-          {localStorage.setItem('token', response.body.token);}
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('token', response.body.token);
+          }
           if (response.status === 200) {
+            this.toastr.success('Login successful', '', {
+              timeOut: 2000,
+            });
             this.isAuthenticatedSubject.next(true);
           }
         })

@@ -3,13 +3,10 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   email = '';
@@ -26,11 +23,9 @@ export class LoginComponent {
   onSubmit() {
     this.authService.login(this.email, this.password).subscribe(
       () => {
-        // Successful login, navigate to "home" page
         this.router.navigate(['/home']);
       },
       (error) => {
-        // plus beau qu'avec toastr
         console.error('Login failed', error);
         this.showAlert = true;
 
@@ -40,6 +35,4 @@ export class LoginComponent {
       }
     );
   }
-
-
 }
