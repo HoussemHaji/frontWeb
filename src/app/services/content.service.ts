@@ -73,4 +73,10 @@ export class ContentService {
     });
   }
 
+    getPostsByCategory(categoryId: number): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.URL}/category/filter/posts?categoryIds=${categoryId}`, {
+      headers: this.headers,
+    });
+  }
+
 }
