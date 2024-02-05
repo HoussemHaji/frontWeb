@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContentService } from '../../services/content.service';
 import { Post } from '../../Model/post';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-categories',
@@ -9,20 +10,18 @@ import { Post } from '../../Model/post';
 })
 export class CategoriesComponent implements OnInit {
 
-  posts: Post[] = [];
-  isClicked : Boolean = false;
+  posts$!: Observable<Post[]>;
+  isClicked: Boolean = false;
 
   constructor(private contentService: ContentService) { }
 
   ngOnInit(): void {
   }
 
-  fetchPosts(id : number): void {
-    this.contentService.getPostsByCategory(id).subscribe((posts) => {
-      this.posts = posts;
-      this.isClicked = true;
-      console.log(this.posts);
-    });
+  fetchPosts(id: number): void {
+
+    this.posts$ = this.contentService.getPostsByCategory(id);
+    this.isClicked = true;
   }
 
 

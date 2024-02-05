@@ -23,6 +23,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgetPassworrdComponent } from './components/forget-passworrd/forget-passworrd.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ForgetPassworrdComponent } from './components/forget-passworrd/forget-p
     CategoriesComponent,
     CreatePostComponent,
     ForgetPassworrdComponent,
+    SearchComponent,
   ],
   imports: [
     HttpClientModule,

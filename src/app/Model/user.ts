@@ -3,7 +3,7 @@ export class User {
     firstname: string;
     lastname: string;
     email: string;
-    profilepic?: string;
+    profilePic: string;
     place: string;
     bio: string;
     constructor(
@@ -20,7 +20,7 @@ export class User {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
-        this.profilepic = profilepic;
+        this.profilePic = profilepic;
         this.place = place;
         this.bio = bio;
     }

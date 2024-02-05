@@ -11,6 +11,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { ForgetPassworrdComponent } from './components/forget-passworrd/forget-passworrd.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,10 +19,11 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'single-post/:id', component: SinglePostComponent },
-  { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]},
-  { path: 'profile' , component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'categories' , component: CategoriesComponent, canActivate: [AuthGuard] },
+  { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'categories', component: CategoriesComponent, canActivate: [AuthGuard] },
   { path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard] },
+  { path: 'forgot-password', component: ForgetPassworrdComponent },
 
   // Add other routes as needed
 ];
@@ -30,4 +32,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

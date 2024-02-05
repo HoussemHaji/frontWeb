@@ -11,10 +11,10 @@
       >
         <img
           class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-          [src]="userData.profilePic"
+          [src]="user.profilePic"
           alt="Bordered avatar"
         />
-        {{ userData.firstname | uppercase }} {{ userData.lastname | uppercase }}
+        {{ user.firstname | uppercase }} {{ user.lastname | uppercase }}
       </p>
       <ul
         class="flex flex-col md:flex-row items-start md:items-center text-gray-600 dark:text-gray-400 text-sm mt-3"
@@ -105,6 +105,6 @@
     <!-- Code block ends -->
   </div>
   
-<app-posts [posts$]="posts$"></app-posts>
+<app-posts></app-posts>
 
 </div>

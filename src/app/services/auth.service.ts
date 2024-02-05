@@ -20,13 +20,13 @@ export class AuthService {
     private http: HttpClient,
     private cookieService: CookieService,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   signup(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/register`, user);
   }
-  getUser(): Observable<User> {
-    return this.UserSubject.asObservable();
+  getUser(): any {
+    return localStorage.getItem('user');
   }
 
   setUser(user: User): void {
@@ -46,9 +46,9 @@ export class AuthService {
       .post(`${this.apiUrl}/auth/login`, body, { observe: 'response' })
       .pipe(
         tap((response: HttpResponse<any>) => {
-          // Extract and log cookies from the response headers
           if (typeof window !== 'undefined') {
             localStorage.setItem('token', response.body.token);
+            localStorage.setItem('user', JSON.stringify(response.body.user));
           }
           if (response.status === 200) {
             this.toastr.success('Login successful', '', {
@@ -68,8 +68,12 @@ export class AuthService {
     return this.isAuthenticatedSubject.value;
   }
 
+  forgotPassword(email: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/auth/forgot-password`, { email });
+  }
+
   getCurrentUser(): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/auth`, {
+    return this.http.post<User>(`${this.apiUrl}/auth`, {
       headers: {
         Authorization: `Bearer ${this.getToken()}`,
       },
