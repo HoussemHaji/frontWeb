@@ -58,16 +58,23 @@ export class ContentService {
     formData.append('picture', file);
     return this.http.post(this.URL + `/posts/upload-photo`, formData);
   }
-  
+
   handleErrors(error: any): void {
     if (error.status === 401) {
-      localStorage.removeItem('token');
+      if(typeof window !== 'undefined')
+      {localStorage.removeItem('token');}
       console.log('Unauthorized');
     }
   }
 
   createPost(post: Post): Observable<any> {
     return this.http.post(this.URL + `/posts`, post, {
+      headers: this.headers,
+    });
+  }
+
+    getPostsByCategory(categoryId: number): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.URL}/category/filter/posts?categoryIds=${categoryId}`, {
       headers: this.headers,
     });
   }

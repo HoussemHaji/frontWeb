@@ -16,7 +16,6 @@ export class PostsComponent implements OnInit {
   constructor(private contentService: ContentService,
     private router: Router) { }
 
-  ngOnInit(): void {
 
-  }
+  ngOnInit(): void {}
 }

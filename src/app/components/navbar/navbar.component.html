@@ -8,7 +8,7 @@
       [routerLink]="['/home']"
       class="mr-4 block cursor-pointer py-1.5 font-sans text-3xl font-bold leading-relaxed text-inherit antialiased"
     >
-      PintGhaleba
+      PintQuest
     </a>
     <div class="hidden lg:block">
       <ul
@@ -65,7 +65,9 @@
               fill="#90A4AE"
             ></path>
           </svg>
-          <a href="#" class="flex items-center"> In Progress </a>
+          <a [routerLink]="['/categories']" class="flex items-center">
+            Categories
+          </a>
         </li>
         <li
           class="flex items-center p-1 font-sans text-base antialiased font-medium leading-normal gap-x-2 text-blue-gray-900"
@@ -88,7 +90,7 @@
         </li>
       </ul>
     </div>
-    <div class="hidden lg:flex justify-around gap-6">
+    <div class="hidden lg:flex justify-around gap-6" *ngIf="isLoggedIn()">
       <div class="items-center gap-x-2 lg:flex">
         <div class="relative flex w-full gap-2">
           <div class="relative h-10 w-full">
