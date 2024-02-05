@@ -3,16 +3,18 @@ import { ActivatedRoute } from '@angular/router';
 import { Post } from '../../Model/post';
 import { ContentService } from '../../services/content.service';
 import { User } from '../../Model/user';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit {
   id: string | undefined;
   posts: Post[] = [];
   user!: User;
+  posts$!: Observable<Post[]>;
   constructor(
     private route: ActivatedRoute,
     private contentService: ContentService,
@@ -29,9 +31,10 @@ export class ProfileComponent implements OnInit{
   }
 
   fetchPosts(IDD: string): void {
-    this.contentService.getPostsForUser(IDD).subscribe((posts) => {
-      this.posts = posts;
-    });
+    // this.contentService.getPostsForUser(IDD).subscribe((posts) => {
+    //   this.posts = posts;
+    // });
+    this.posts$ = this.contentService.getPostsForUser(IDD);
   }
 
 }

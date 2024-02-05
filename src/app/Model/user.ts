@@ -3,9 +3,9 @@ export class User {
     firstname: string;
     lastname: string;
     email: string;
-    password: string;
     profilepic?: string;
-    roles: string;
+    place: string;
+    bio: string;
     constructor(
         id = '',
         firstname = '',
@@ -13,15 +13,16 @@ export class User {
         email = '',
         password = '',
         profilepic = '',
-        roles = ''
+        place = '',
+        bio = ''
     ) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
-        this.password = password;
         this.profilepic = profilepic;
-        this.roles = roles;
+        this.place = place;
+        this.bio = bio;
     }
 
 }

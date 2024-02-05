@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Post } from '../../Model/post';
 import { ContentService } from '../../services/content.service';
 import { Router, RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-posts',
@@ -10,9 +11,11 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class PostsComponent implements OnInit {
   @Input()
-  posts: Post[] = [];
+  posts$!: Observable<Post[]>;
 
-  constructor(private contentService: ContentService, private router: Router) {}
+  constructor(private contentService: ContentService,
+    private router: Router) { }
+
 
   ngOnInit(): void {}
 }

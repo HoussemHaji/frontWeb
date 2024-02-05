@@ -3,6 +3,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { ContentService } from '../../services/content.service';
 
 
 @Component({
@@ -14,10 +15,15 @@ export class SignupComponent {
   firstname = '';
   lastname = '';
   email = '';
-  password= '';
-  profilePic = ''; // You might handle file uploads differently
-
-  constructor(private authService: AuthService, private router: Router) {}
+  password = '';
+  profilePic = '';
+  place = '';
+  bio = '';
+  selectedFile: File | null = null;
+  constructor(
+    private authService: AuthService, 
+    private router: Router,
+    private contentService: ContentService) { }
 
   onSubmit() {
     const user = {
@@ -25,18 +31,34 @@ export class SignupComponent {
       lastname: this.lastname,
       email: this.email,
       password: this.password,
-      profilePic: this.profilePic
+      profilePicUrl: this.profilePic,
+      place: this.place,
+      bio: this.bio
+
     };
 
     this.authService.signup(user).subscribe(
       () => {
-        // Successful signup, navigate to the login page
         this.router.navigate(['/login']);
       },
       (error) => {
-        // Handle signup error
         console.error('Signup failed', error);
       }
     );
+  }
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    if (this.selectedFile) {
+      this.contentService.uploadFile(this.selectedFile).subscribe((data: any) => {
+        console.log(data);
+        this.profilePic = data.filePath;
+      }, (error) => {
+        console.log(error);
+      }
+      );
+    } else {
+      console.log("No file selected");
+    }
   }
 }

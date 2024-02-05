@@ -1,9 +1,9 @@
-<!-- posts.component.html -->
 
 <div class="">
+
   <div class="mx-auto lg:px-4">
     <div class="flex flex-wrap justify-between gap-5">
-      <div *ngFor="let post of posts" class="flex-grow">
+      <div *ngFor="let post of posts$ | async" class="flex-grow">
         <a
           [routerLink]="['/single-post', post.id]"
           class="group relative flex flex-col items-end overflow-hidden rounded-3xl shadow-lg"
