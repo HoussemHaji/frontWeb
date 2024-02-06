@@ -2,6 +2,7 @@
   class="bg-white min-h-screen dark:bg-gray-900 py-32 px-7 antialiased flex flex-col justify-around items-center gap-10"
 >
   <button (click)="navigateProfile()">see profile</button>
+  <button (click)="reportPost()" class="text-black p-2 rounded-full border bg-gray-100  ">Report</button>
   <img
     class="h-96 max-w-full rounded-xl shadow"
     [src]="post.mainImageUrl"

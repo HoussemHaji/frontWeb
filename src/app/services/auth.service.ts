@@ -79,4 +79,11 @@ export class AuthService {
       },
     });
   }
+  isAdmin(): boolean {
+
+    return (
+      (typeof window !== 'undefined') && (JSON.parse(localStorage.getItem('user') ?? '').roles === 'Admin')
+    );
+
+  }
 }

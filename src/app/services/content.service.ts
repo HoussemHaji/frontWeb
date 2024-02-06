@@ -84,4 +84,10 @@ export class ContentService {
     });
   }
 
+  reportPost(postId: string): Observable<any> {
+    return this.http.get(`${this.URL}/posts/report/${postId}`, {
+      headers: this.headers,
+    });
+  }
+
 }

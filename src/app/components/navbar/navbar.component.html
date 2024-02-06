@@ -70,6 +70,7 @@
           </a>
         </li>
         <li
+          *ngIf="isAdmin()"
           class="flex items-center p-1 font-sans text-base antialiased font-medium leading-normal gap-x-2 text-blue-gray-900"
         >
           <svg
@@ -86,7 +87,7 @@
               fill="#90A4AE"
             ></path>
           </svg>
-          <a href="" class="flex items-center"> In Progress </a>
+          <a [routerLink]="['/dashboard']" class="flex items-center"> Dashboard </a>
         </li>
       </ul>
     </div>

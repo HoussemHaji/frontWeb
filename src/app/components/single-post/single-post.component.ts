@@ -83,4 +83,24 @@ export class SinglePostComponent implements OnInit {
 
       this.router.navigate([`/profile/${this.userId??''}`]);
     }
+
+  reportPost(): void {
+    if (this.id) {
+      this.contentService.reportPost(this.id).subscribe({
+        next: (res) => {
+          console.log('Post reported');
+          this.toastr.success('Post reported successfully', '', {
+            timeOut: 2000,
+          });
+        },
+        error: (error) => {
+          console.error('Error reporting post:', error);
+          this.contentService.handleErrors(error);
+          this.toastr.error('Error reporting post', '', {
+            timeOut: 2000,
+          });
+        }
+      });
+    }
+  }
 }
