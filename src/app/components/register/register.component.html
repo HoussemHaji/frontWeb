@@ -1,220 +1,218 @@
-<section class="bg-gray-50 dark:bg-gray-900 py-32">
+<div
+  class="container flex flex-col items-center justify-center px-6 py-8 mx-auto md:min-h-screen pt-48"
+>
   <div
-    class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
+    class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
   >
-    <div
-      class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
-    >
-      <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-        <h1
-          class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white"
-        >
-          Create your account
-        </h1>
-        <form
-          class="space-y-4 md:space-y-6"
-          (ngSubmit)="onSubmit()"
-          #loginForm="ngForm"
-        >
-          <div>
-            <label
-              for="firstname"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Firstname</label
-            >
-            <input
-              type="text"
-              name="firstname"
-              [(ngModel)]="firstname"
-              id="firstname"
-              placeholder="Foulen"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required=""
-            />
-          </div>
+    <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+      <h1
+        class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white"
+      >
+        Create your account
+      </h1>
+      <form
+        class="space-y-4 md:space-y-6"
+        (ngSubmit)="onSubmit()"
+        #loginForm="ngForm"
+      >
+        <div>
+          <label
+            for="firstname"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Firstname</label
+          >
+          <input
+            type="text"
+            name="firstname"
+            [(ngModel)]="firstname"
+            id="firstname"
+            placeholder="Foulen"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required=""
+          />
+        </div>
 
-          <div>
-            <label
-              for="lastname"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Lastname</label
-            >
-            <input
-              type="text"
-              name="lastname"
-              [(ngModel)]="lastname"
-              id="lastname"
-              placeholder="Fouleni"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required=""
-            />
-          </div>
-          <div>
-            <label
-              for="email"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Your email</label
-            >
-            <input
-              type="email"
-              name="email"
-              [(ngModel)]="email"
-              id="email"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="name@company.com"
-              required=""
-            />
-          </div>
-          <div>
-            <label
-              for="password"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Password</label
-            >
-            <input
-              type="password"
-              name="password"
-              [(ngModel)]="password"
-              id="password"
-              placeholder="••••••••"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required=""
-            />
-          </div>
-          <div>
-            <label
-              for="Place"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Your town</label
-            >
-            <input
-              type="email"
-              name="email"
-              [(ngModel)]="place"
-              id="place"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Tuins, TUNISIA"
-              required=""
-            />
-          </div>
-          <div>
-            <label
-              for="email"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >biol</label
-            >
-            <input
-              type="bio"
-              name="bio"
-              [(ngModel)]="bio"
-              id="bio"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="I'm a developer, I love coding and I'm a fan of Angular"
-              required=""
-            />
-          </div>
+        <div>
+          <label
+            for="lastname"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Lastname</label
+          >
+          <input
+            type="text"
+            name="lastname"
+            [(ngModel)]="lastname"
+            id="lastname"
+            placeholder="Fouleni"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required=""
+          />
+        </div>
+        <div>
+          <label
+            for="email"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Your email</label
+          >
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+            id="email"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="name@company.com"
+            required=""
+          />
+        </div>
+        <div>
+          <label
+            for="password"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Password</label
+          >
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+            id="password"
+            placeholder="••••••••"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required=""
+          />
+        </div>
+        <div>
+          <label
+            for="Place"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Your town</label
+          >
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="place"
+            id="place"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Tuins, TUNISIA"
+            required=""
+          />
+        </div>
+        <div>
+          <label
+            for="email"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >biol</label
+          >
+          <input
+            type="bio"
+            name="bio"
+            [(ngModel)]="bio"
+            id="bio"
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="I'm a developer, I love coding and I'm a fan of Angular"
+            required=""
+          />
+        </div>
 
-          <div>
-            <label
-              for="profile"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Profile Pic</label
-            >
-            <input
-              type="text"
-              name="profile"
-              [(ngModel)]="profilePic"
-              id="profile"
-              placeholder=""
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required=""
-            />
-          </div>
+        <div>
+          <label
+            for="profile"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Profile Pic</label
+          >
+          <input
+            type="text"
+            name="profile"
+            [(ngModel)]="profilePic"
+            id="profile"
+            placeholder=""
+            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required=""
+          />
+        </div>
 
-          <div>
-            <form #fileForm="ngForm">
-              <div class="flex items-center justify-center w-full">
-                <label
-                  for="dropzone-file"
-                  class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+        <div>
+          <form #fileForm="ngForm">
+            <div class="flex items-center justify-center w-full">
+              <label
+                for="dropzone-file"
+                class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+              >
+                <div
+                  class="flex flex-col items-center justify-center pt-5 pb-6"
                 >
-                  <div
-                    class="flex flex-col items-center justify-center pt-5 pb-6"
-                  >
-                    <svg
-                      class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 20 16"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                      />
-                    </svg>
-                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                      <span class="font-semibold">Click to upload</span> or drag
-                      and drop
-                    </p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                      SVG, PNG, JPG or GIF (MAX. 800x400px)
-                    </p>
-                  </div>
-                  <input
-                    id="dropzone-file"
-                    type="file"
-                    class="hidden"
-                    name="file"
-                    #fileInput
-                    (change)="onFileSelected($event)"
-                  />
-                </label>
-              </div>
-              <div class="flex justify-end w-full">
-                <button
-                  type="submit"
-                  class="flex items-center gap-2 font-medium bg-white border hover:bg-blue-gray-50 hover:border-blue-gray-900 transition duration-300 mt-3 rounded-full text-sm p-2 px-4"
-                >
-                  Upload
                   <svg
+                    class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-4 h-4"
+                    viewBox="0 0 20 16"
                   >
                     <path
+                      stroke="currentColor"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
+                      stroke-width="2"
+                      d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                     />
                   </svg>
-                </button>
-              </div>
-            </form>
-          </div>
+                  <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                    <span class="font-semibold">Click to upload</span> or drag
+                    and drop
+                  </p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">
+                    SVG, PNG, JPG or GIF (MAX. 800x400px)
+                  </p>
+                </div>
+                <input
+                  id="dropzone-file"
+                  type="file"
+                  class="hidden"
+                  name="file"
+                  #fileInput
+                  (change)="onFileSelected($event)"
+                />
+              </label>
+            </div>
+            <div class="flex justify-end w-full">
+              <button
+                type="submit"
+                class="flex items-center gap-2 font-medium bg-white border hover:bg-blue-gray-50 hover:border-blue-gray-900 transition duration-300 mt-3 rounded-full text-sm p-2 px-4"
+              >
+                Upload
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-4 h-4"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
+                  />
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
 
-          <button
-            type="submit"
-            class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+        <button
+          type="submit"
+          class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+        >
+          Sign Up
+        </button>
+        <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+          Already have an account ?
+          <a
+            href="#"
+            class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+            >Sign In</a
           >
-            Sign Up
-          </button>
-          <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-            Already have an account ?
-            <a
-              href="#"
-              class="font-medium text-primary-600 hover:underline dark:text-primary-500"
-              >Sign In</a
-            >
-          </p>
-        </form>
-      </div>
+        </p>
+      </form>
     </div>
   </div>
-</section>
+</div>
