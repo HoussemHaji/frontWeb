@@ -78,8 +78,8 @@ export class ContentService {
     });
   }
 
-  searchPosts(title: string): Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.URL}/posts/search?title=${title}`, {
+  searchPosts(searchTerm: string): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.URL}/posts?title=${searchTerm}&content=${searchTerm}`, {
       headers: this.headers,
     });
   }

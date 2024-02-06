@@ -8,28 +8,22 @@ import { User } from '../../Model/user';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
   id: string | undefined;
   posts$!: Observable<Post[]>;
   user!: User;
 
-
-
   constructor(
     private contentService: ContentService,
     private authService: AuthService
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
-
     this.user = JSON.parse(this.authService.getUser());
-    this.posts$ = this.contentService.getPosts()
-    this.posts$.forEach(post => console.log(post));
-
+    this.posts$ = this.contentService.getPosts();
+    this.posts$.forEach((post) => console.log(post));
   }
 
   onPostsEmitted(posts$: Observable<Post[]>): void {

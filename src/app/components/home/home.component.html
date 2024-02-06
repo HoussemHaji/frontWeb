@@ -1,79 +1,35 @@
 <div class="min-h-screen h-full px-7 py-32">
-  <!-- Code block starts -->
-  <div
-    class="my-6 lg:my-12 container px-6 mx-auto flex flex-col md:flex-row items-start md:items-center justify-between pb-4 border-b border-gray-300"
-  >
-    <div>
-      <p
-        class="flex items-center text-2xl font-semibold gap-6 leading-tight text-gray-800 dark:text-gray-100"
-      >
-        <img
-          class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-          [src]="user.profilePic"
-          alt="Bordered avatar"
-        />
-        {{ user.firstname | uppercase }} {{ user.lastname | uppercase }}
-      </p>
-      <ul
-        class="flex flex-col md:flex-row items-start md:items-center text-gray-600 dark:text-gray-400 text-sm mt-3"
-      >
-        <li class="flex items-center mr-4">
-          <div class="mr-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-paperclip"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+    <!-- Code block starts -->
+    <div class="my-6 lg:my-12 container px-6 mx-auto flex flex-col md:flex-row items-start md:items-center justify-between pb-4 border-b border-gray-300">
+        <div>
+            <p class="flex items-center text-2xl font-semibold gap-6 leading-tight text-gray-800 dark:text-gray-100">
+                <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" [src]="user.profilePic" alt="Bordered avatar" /> {{ user.firstname | uppercase }} {{ user.lastname | uppercase }}
+            </p>
+            <ul class="flex flex-col md:flex-row items-start md:items-center text-gray-600 dark:text-gray-400 text-sm mt-3">
+                <li class="flex items-center mr-4">
+                    <div class="mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-paperclip" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" />
               <path
                 d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9 l6.5 -6.5"
               />
             </svg>
-          </div>
-          <span>Active</span>
-        </li>
-        <li class="flex items-center mr-4 mt-4 md:mt-0">
-          <div class="mr-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-trending-up"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+                    </div>
+                    <span>Active</span>
+                </li>
+                <li class="flex items-center mr-4 mt-4 md:mt-0">
+                    <div class="mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trending-up" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" />
               <polyline points="3 17 9 11 13 15 21 7" />
               <polyline points="14 7 21 7 21 14" />
             </svg>
-          </div>
-          <span> Trending</span>
-        </li>
-        <li class="flex items-center mt-4 md:mt-0">
-          <div class="mr-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-plane-departure"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+                    </div>
+                    <span> Trending</span>
+                </li>
+                <li class="flex items-center mt-4 md:mt-0">
+                    <div class="mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane-departure" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" />
               <path
                 d="M15 12h5a2 2 0 0 1 0 4h-15l-3 -6h3l2 2h3l-2 -7h3z"
@@ -81,32 +37,23 @@
               />
               <line x1="3" y1="21" x2="21" y2="21" />
             </svg>
-          </div>
-          <span>Started on 29 Jan 2024</span>
-        </li>
-      </ul>
-    </div>
-    <app-search
-      class="basis-2/5"
-      (posts$Emitter)="onPostsEmitted($event)"
-    ></app-search>
+                    </div>
+                    <span>Started on 29 Jan 2024</span>
+                </li>
+            </ul>
+        </div>
+        <app-search class="basis-2/5" (posts$Emitter)="onPostsEmitted($event)"></app-search>
 
-    <div class="mt-6 md:mt-0">
-      <button
-        [routerLink]="['/profile']"
-        class="mr-3 bg-gray-200 dark:bg-gray-700 focus:outline-none transition duration-150 ease-in-out rounded-full hover:bg-gray-300 text-indigo-700 dark:hover:bg-gray-600 dark:text-indigo-600 px-5 py-3 text-sm"
-      >
+        <div class="mt-6 md:mt-0">
+            <button [routerLink]="['/profile']" class="mr-3 bg-gray-200 dark:bg-gray-700 focus:outline-none transition duration-150 ease-in-out rounded-full hover:bg-gray-300 text-indigo-700 dark:hover:bg-gray-600 dark:text-indigo-600 px-5 py-3 text-sm">
         View Profile
       </button>
-      <button
-        [routerLink]="['/create-post']"
-        class="transition focus:outline-none duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded-full text-white px-8 py-3 text-sm"
-      >
+            <button [routerLink]="['/create-post']" class="transition focus:outline-none duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded-full text-white px-8 py-3 text-sm">
         Add Post
       </button>
+        </div>
+        <!-- Code block ends -->
     </div>
-    <!-- Code block ends -->
-  </div>
 
-  <app-posts [posts$]="posts$"></app-posts>
+    <app-posts [posts$]="posts$"></app-posts>
 </div>
