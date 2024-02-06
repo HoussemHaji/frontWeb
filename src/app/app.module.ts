@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgetPassworrdComponent } from './components/forget-passworrd/forget-passworrd.component';
 import { SearchComponent } from './components/search/search.component';
 import { AuthInterceptor, authInterceptorProviders } from './interceprtors/intreceptor.interceptor';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AuthInterceptor, authInterceptorProviders } from './interceprtors/intre
     CreatePostComponent,
     ForgetPassworrdComponent,
     SearchComponent,
+    DashboardComponent,
   ],
   imports: [
     HttpClientModule,

@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { ForgetPassworrdComponent } from './components/forget-passworrd/forget-passworrd.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -24,6 +25,9 @@ const routes: Routes = [
   { path: 'categories', component: CategoriesComponent, canActivate: [AuthGuard] },
   { path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgetPassworrdComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+
+
 
   // Add other routes as needed
 ];
