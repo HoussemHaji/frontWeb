@@ -13,8 +13,9 @@ import { User } from '../../Model/user';
 export class HomeComponent implements OnInit {
   id: string | undefined;
   posts$!: Observable<Post[]>;
-  sub!: Subscription;
   user!: User;
+
+
 
   constructor(
     private contentService: ContentService,
@@ -26,14 +27,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     this.user = JSON.parse(this.authService.getUser());
-    this.contentService.getPosts().subscribe(
-      (data) => {
-        this.contentService.posts$.next(data);
-      }, (error) => {
-        console.error('Error fetching posts', error);
-      }
-    );
+    this.posts$ = this.contentService.getPosts()
+    this.posts$.forEach(post => console.log(post));
 
-    
+  }
+
+  onPostsEmitted(posts$: Observable<Post[]>): void {
+    this.posts$ = posts$;
   }
 }

@@ -1,5 +1,3 @@
-
-
 <div class="min-h-screen h-full px-7 py-32">
   <!-- Code block starts -->
   <div
@@ -102,9 +100,9 @@
         Add Post
       </button>
     </div>
+    <app-search (posts$Emitter)="onPostsEmitted($event)"></app-search>
     <!-- Code block ends -->
   </div>
-  
-<app-posts></app-posts>
 
+  <app-posts [posts$]="posts$"></app-posts>
 </div>

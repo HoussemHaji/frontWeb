@@ -31,9 +31,6 @@ export class ProfileComponent implements OnInit {
   }
 
   fetchPosts(IDD: string): void {
-    // this.contentService.getPostsForUser(IDD).subscribe((posts) => {
-    //   this.posts = posts;
-    // });
     this.posts$ = this.contentService.getPostsForUser(IDD);
   }
 

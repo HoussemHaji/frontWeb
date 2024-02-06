@@ -10,28 +10,15 @@ import { Observable } from 'rxjs';
   styleUrl: './posts.component.css',
 })
 export class PostsComponent implements OnInit {
-  // @Input()
-  // posts$!: Observable<Post[]>;
-  posts: Post[] = [];
+  @Input()
+  posts$!: Observable<Post[]>;
+
   constructor(
-
-    private contentService: ContentService,
-    private router: Router
-
   ) { }
 
 
   ngOnInit(): void {
-    this.contentService.posts$.subscribe(
-      {
-        next: (data: any) => {
-          this.posts = data;
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      }
-    );
-
+    console.log("What");
+    console.log(this.posts$);
   }
 }

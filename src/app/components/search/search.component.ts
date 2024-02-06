@@ -1,8 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
 import { ContentService } from '../../services/content.service';
 import { Post } from '../../Model/post';
 import { ToastrService } from 'ngx-toastr';
-import { debounceTime, distinctUntilChanged, filter, fromEvent, map, switchMap } from 'rxjs';
+import { Observable, debounceTime, distinctUntilChanged, filter, fromEvent, map, of, switchMap } from 'rxjs';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -10,6 +11,8 @@ import { debounceTime, distinctUntilChanged, filter, fromEvent, map, switchMap }
   styleUrl: './search.component.css'
 })
 export class SearchComponent implements OnInit {
+
+  @Output() posts$Emitter: EventEmitter<Observable<Post[]>> = new EventEmitter<Observable<Post[]>>();
 
   @ViewChild('postSearchInput', { static: true })
   postSearchInput!: ElementRef;
@@ -35,10 +38,10 @@ export class SearchComponent implements OnInit {
         )
       )
       .subscribe({
-        next: (data: any) => {
+        next: (data: Post[]) => {
           console.log(data);
           this.searchResults = data;
-          this.contetnService.posts$.next(data);
+          this.posts$Emitter.emit(of(data));
         },
         error: (err) => {
           console.log(err);

@@ -12,7 +12,6 @@ export class ContentService {
   constructor(private http: HttpClient, private authService: AuthService) { }
   private URL: String = 'http://localhost:5000/api';
   private auth_token = this.authService.getToken();
-  posts$ = new BehaviorSubject<Post[]>([]);
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
     Authorization: `Bearer ${this.auth_token}`,
@@ -62,8 +61,7 @@ export class ContentService {
 
   handleErrors(error: any): void {
     if (error.status === 401) {
-      if(typeof window !== 'undefined')
-      {localStorage.removeItem('token');}
+      if (typeof window !== 'undefined') { localStorage.removeItem('token'); }
       console.log('Unauthorized');
     }
   }
@@ -74,7 +72,7 @@ export class ContentService {
     });
   }
 
-    getPostsByCategory(categoryId: number): Observable<Post[]> {
+  getPostsByCategory(categoryId: number): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.URL}/category/filter/posts?categoryIds=${categoryId}`, {
       headers: this.headers,
     });

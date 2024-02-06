@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PostsComponent } from './components/posts/posts.component';
 import { SignupComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -24,6 +24,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgetPassworrdComponent } from './components/forget-passworrd/forget-passworrd.component';
 import { SearchComponent } from './components/search/search.component';
+import { AuthInterceptor, authInterceptorProviders } from './interceprtors/intreceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { SearchComponent } from './components/search/search.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [provideClientHydration(), provideAnimationsAsync()],
+  providers: [provideClientHydration(), provideAnimationsAsync(), authInterceptorProviders],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
